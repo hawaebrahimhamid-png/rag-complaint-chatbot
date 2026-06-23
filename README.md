@@ -1,5 +1,5 @@
 # rag-complaint-chatbot
-# Task 1: Exploratory Data Analysis and Data Preprocessing
+# Task 1 completed (EDA + preprocessing finalized)
 
 ## Objective
 
