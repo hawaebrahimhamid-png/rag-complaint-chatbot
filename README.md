@@ -1,4 +1,3 @@
-# rag-complaint-chatbot
 # Task 1 completed (EDA + preprocessing finalized)
 
 ## Objective
@@ -13,40 +12,57 @@ The CFPB complaint dataset contains consumer complaints submitted across a varie
 
 The following analyses were performed:
 
-* Examined dataset dimensions and column structure.
-* Analyzed complaint distribution across products.
-* Identified records with and without consumer complaint narratives.
-* Calculated complaint narrative lengths using word counts.
-* Visualized narrative length distribution using a histogram.
+- Examined dataset dimensions and column structure.
+- Analyzed complaint distribution across products.
+- Identified records with and without consumer complaint narratives.
+- Calculated complaint narrative lengths using word counts.
+- Visualized narrative length distribution using a histogram.
 
 ### Key Findings
 
-* The largest number of complaints belonged to the **Checking or Savings Account** category.
-* **Credit Card** complaints represented the second largest category.
-* **Money Transfer, Virtual Currency, or Money Service** complaints formed a significant portion of the dataset.
-* **Payday Loan, Title Loan, Personal Loan, or Advance Loan** complaints represented the smallest category among the selected products.
-* Complaint narratives varied significantly in length, ranging from very short descriptions to detailed narratives exceeding 6,000 words.
+- The largest number of complaints belonged to the **Checking or Savings Account** category.
+- **Credit Card** complaints represented the second largest category.
+- **Money Transfer, Virtual Currency, or Money Service** complaints formed a significant portion of the dataset.
+- **Payday Loan, Title Loan, Personal Loan, or Advance Loan** complaints represented the smallest category among the selected products.
+- Complaint narratives varied significantly in length, ranging from very short descriptions to detailed narratives exceeding 6,000 words.
 
 ## Data Preprocessing
 
 The dataset was prepared for downstream retrieval and embedding generation through the following preprocessing steps:
 
 1. Filtered the dataset to retain only:
-
-   * Credit Card
-   * Checking or Savings Account
-   * Money Transfer, Virtual Currency, or Money Service
-   * Payday Loan, Title Loan, Personal Loan, or Advance Loan
+   - Credit Card
+   - Checking or Savings Account
+   - Money Transfer, Virtual Currency, or Money Service
+   - Payday Loan, Title Loan, Personal Loan, or Advance Loan
 
 2. Removed records with missing consumer complaint narratives.
 
-3. Cleaned narrative text by:
-
-   * Converting text to lowercase.
-   * Removing special characters.
-   * Normalizing whitespace.
+3. - Cleaned narrative text by:
+   - Converting text to lowercase.
+   - Removing common boilerplate phrases.
+   - Removing special characters and unnecessary symbols.
+   - Normalizing whitespace.
 
 4. Created a cleaned text column (`clean_text`) for future embedding generation.
+
+## Validation Results
+
+After preprocessing, the dataset was validated to ensure it is ready for the RAG pipeline.
+
+Checks performed:
+
+- Confirmed that all retained records contain complaint narratives.
+- Verified that cleaned text (`clean_text`) contains no missing values.
+- Confirmed that only the required financial product categories remain.
+- Reviewed cleaned text samples to ensure preprocessing removed unnecessary noise while preserving customer complaint information.
+
+The final dataset is structured and ready for the next stages:
+
+- Text chunking
+- Embedding generation
+- Vector database indexing
+- Semantic retrieval
 
 ## Output
 
