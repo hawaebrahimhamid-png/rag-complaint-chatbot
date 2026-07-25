@@ -80,127 +80,79 @@ This dataset will be used in subsequent tasks for text chunking, embedding gener
 notebooks/task1_eda.ipynb
 data/filtered_complaints.csv
 ```
-# Task 2: Text Chunking, Embedding, and Vector Store Indexing
+## Task 2: Chunking, Embedding & Vector Store Creation
 
-## Objective
+### Overview
 
-The objective of Task 2 was to transform cleaned complaint narratives into a format suitable for semantic search and Retrieval-Augmented Generation (RAG). This involved sampling complaint records, splitting long narratives into smaller chunks, generating vector embeddings, and storing them in a vector database for efficient retrieval.
+This task prepares complaint data for a Retrieval-Augmented Generation (RAG) system by transforming cleaned complaint records into searchable vector representations.
 
----
+The pipeline performs:
 
-## Sampling Strategy
-
-A stratified sampling approach was used to preserve the proportional distribution of complaints across product categories. This ensures that all product categories are represented fairly in the sample dataset.
-
-### Product Categories
-
-* Credit Card
-* Mortgage
-* Debt Collection
-* Checking or Savings Account
-* Vehicle Loan or Lease
-
-### Sampling Details
-
-* Sampling method: Stratified Sampling
-* Sampling fraction: 0.02
-* Final sample size: 14,536 complaints
-
-This approach reduced computational requirements while maintaining representative coverage of the dataset.
+1. Data sampling
+2. Text chunking
+3. Sentence Transformer embedding generation
+4. FAISS vector database creation
 
 ---
 
-## Text Chunking
+### Sampling Strategy
 
-Long complaint narratives were divided into smaller text segments before embedding generation.
+The original processed dataset contains 80,667 complaint records. Due to local hardware memory limitations, a smaller subset was used for embedding generation and FAISS indexing.
 
-### Chunking Parameters
+For efficient processing, 10,000 records were loaded from the processed dataset, and a sample of 1,000 complaint records was selected for building the retrieval system.
 
-* Chunk Size: 500 characters
-* Chunk Overlap: 50 characters
+The sampled dataset was used for:
 
-### Why Chunking?
+- Text chunking
+- Sentence Transformer embeddings
+- FAISS vector indexing
 
-Embedding entire complaint narratives can reduce retrieval effectiveness because important information may be diluted across long texts. Chunking helps:
-
-* Preserve semantic meaning
-* Improve retrieval precision
-* Reduce information loss at chunk boundaries
-* Enable more relevant context retrieval during RAG
+The full processed dataset was retained, and the pipeline can be scaled to larger datasets with additional computational resources.
 
 ---
 
-## Embedding Model
+### Embedding Model
 
-The embedding model used was:
+The project uses:
 
-`sentence-transformers/all-MiniLM-L6-v2`
+- Model: `sentence-transformers/all-MiniLM-L6-v2`
+- Embedding dimension: 384
 
-### Reasons for Selection
-
-* Lightweight and efficient
-* Fast embedding generation
-* Produces 384-dimensional embeddings
-* Strong semantic similarity performance
-* Commonly used baseline model for RAG applications
+The model converts complaint text chunks into numerical vectors that capture semantic meaning.
 
 ---
 
-## Vector Store
+### Vector Store
 
-FAISS (Facebook AI Similarity Search) was used to store and search embeddings efficiently.
+FAISS (Facebook AI Similarity Search) is used to store and retrieve similar complaint embeddings efficiently.
 
-### Configuration
+Generated artifacts:
 
-* Index Type: `IndexFlatL2`
-* Similarity Metric: Euclidean Distance (L2)
-
-### Stored Metadata
-
-For each chunk, the following metadata was retained:
-
-* Complaint ID
-* Product Category
-* Chunk Index
-* Chunk Text
-
-This allows retrieved results to be traced back to their original complaint records.
-
----
-
-## Output Files
-
-The following files were generated and stored in the `vector_store/` directory:
-
-```text
 vector_store/
-├── faiss_index.bin
-├── chunk_metadata.csv
-```
+├── faiss.index
+├── metadata.csv
+└── chunks.csv
 
-### File Descriptions
-
-| File               | Description                                                  |
-| ------------------ | ------------------------------------------------------------ |
-| faiss_index.bin    | Persisted FAISS vector index containing complaint embeddings |
-| chunk_metadata.csv | Metadata associated with each embedded text chunk            |
 
 ---
 
-## Retrieval Test
+### Task 2 Pipeline
 
-A semantic retrieval function was implemented and tested using sample queries.
+Filtered Complaints Dataset
+↓
+Data Sampling
+↓
+Text Chunking
+↓
+Sentence Transformer Embeddings
+↓
+FAISS Index
+↓
+Semantic Search Retrieval
 
-Example query:
-
-```python
-retrieve("credit card billing problem")
-```
-
-The retrieval system successfully returned the most relevant complaint chunks based on semantic similarity.
 
 ---
 
-## Outcome
+### Output
 
-Task 2 successfully produced a searchable vector database of complaint narratives. The resulting FAISS index and metadata store will be used in Task 3 to build a Retrieval-Augmented Generation (RAG) pipeline capable of answering user questions about customer complaints.
+Task 2 successfully creates a searchable vector database that will be used by the RAG retriever component in the next stage.
