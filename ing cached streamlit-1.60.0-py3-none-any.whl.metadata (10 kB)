@@ -1,0 +1,19 @@
+* [33m231aff4[m[33m ([m[1;31morigin/task3-rag-core[m[33m, [m[1;32mtask3-rag-core[m[33m)[m Complete Task 3 RAG pipeline evaluation
+*   [33m8c218d3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mtask4-chat-interface[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m Merge pull request #4 from hawaebrahimhamid-png/task2-vector-store
+[32m|[m[33m\[m  
+[32m|[m * [33m0f5a37d[m[33m ([m[1;31morigin/task2-vector-store[m[33m, [m[1;32mtask2-vector-store[m[33m)[m Complete Task 2 chunking embedding and vector store pipeline
+[32m|[m[32m/[m  
+*   [33m9ecd90c[m Merge pull request #3 from hawaebrahimhamid-png/task1
+[34m|[m[35m\[m  
+[34m|[m * [33m7e1b1ec[m[33m ([m[1;31morigin/task1[m[33m, [m[1;32mtask1[m[33m)[m Improve Task 1 documentation and validation details
+* [35m|[m   [33ma37d553[m Merge pull request #2 from hawaebrahimhamid-png/task2-vector-store
+[36m|[m[1;31m\[m [35m\[m  
+[36m|[m * [35m|[m [33mef22e08[m feat: implement text chunking embeddings and FAISS vector store
+* [1;31m|[m [35m|[m   [33md7151a2[m Merge pull request #1 from hawaebrahimhamid-png/task1
+[1;31m|[m[35m\[m [1;31m\[m [35m\[m  
+[1;31m|[m [35m|[m[1;31m/[m [35m/[m  
+[1;31m|[m[1;31m/[m[35m|[m [35m/[m   
+[1;31m|[m [35m|[m[35m/[m    
+[1;31m|[m * [33m7cd34b1[m Update Task 1 branch for PR
+[1;31m|[m[1;31m/[m  
+* [33mf46dfd5[m Complete Task 1: EDA and data preprocessing
