@@ -3,6 +3,11 @@ from pathlib import Path
 from src.rag.retriever import Retriever
 from src.rag.prompt import PROMPT_TEMPLATE
 from src.rag.generator import generate_answer
+from src.config import AppConfig
+
+from typing import Tuple
+import pandas as pd
+
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -14,11 +19,11 @@ retriever = Retriever(
 )
 
 
-def ask(question):
+def ask(question: str) -> Tuple[str, pd.DataFrame]:
 
     results = retriever.search(
         question,
-        k=3
+        k=AppConfig.TOP_K
     )
 
     if results.empty:

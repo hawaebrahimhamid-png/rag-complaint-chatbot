@@ -16,7 +16,7 @@ user experience, and professional communication.
 ## 1. Refactor Code Structure
 
 **Priority:** High  
-**Timeline:** Week 12 Phase 1
+**Timeline:** 1–2 days
 
 ### Actions:
 - Add type hints to functions.
@@ -36,7 +36,7 @@ A cleaner and more maintainable codebase suitable for future development.
 ## 2. Add Unit Testing and CI/CD
 
 **Priority:** High  
-**Timeline:** Week 12 Phase 2
+**Timeline:** 1–2 days
 
 
 ### Actions:
@@ -57,7 +57,7 @@ future changes.
 ## 3. Improve Streamlit Dashboard
 
 **Priority:** Medium  
-**Timeline:** Week 12 Phase 3
+**Timeline:** 1 day
 
 ### Actions:
 - Add complaint statistics.
@@ -77,7 +77,7 @@ A more intuitive interface for exploring complaint insights and AI responses.
 ## 4. Improve Documentation
 
 **Priority:** Medium  
-**Timeline:** Week 12 Phase 4
+**Timeline:** 1 day
 
 ### Actions:
 - Rewrite README with business context.
