@@ -1,5 +1,3 @@
-# src/rag/generator.py
-
 from transformers import pipeline
 
 
@@ -13,7 +11,7 @@ def generate_answer(prompt):
 
     response = generator(
         prompt,
-        max_length=200,
+        max_length=100,
         min_length=20,
         do_sample=False
     )

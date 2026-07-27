@@ -304,6 +304,7 @@ This retrieval step provides the contextual information required by the language
 
 ### Prompt Engineering
 
+
 A structured prompt template was designed to guide the language model.
 
 The prompt instructs the model to:
@@ -477,7 +478,7 @@ streamlit run app.py
 
 The application will open automatically in your default web browser.
 
----
+
 
 ## Screenshots
 
@@ -489,7 +490,7 @@ Displays the initial application interface before a question is entered.
 
 ![Home](reports/images/home.png)
 
----
+
 
 ### Question and Generated Answer
 
@@ -505,10 +506,15 @@ Displays the complaint text chunks retrieved from the FAISS vector store that we
 
 ![Sources](reports/images/sources.png)
 
----
+
 
 ## Outcome
 
 Task 4 successfully delivered a clean and interactive Streamlit interface for the RAG system.
 
 The application enables users to ask questions about customer complaints, receive context-aware AI-generated answers, and verify those answers through the retrieved source documents, improving both usability and trust in the system.
+
+Task 2 successfully creates a searchable vector database that will be used by the RAG retriever component in the next stage.
+
+
+
