@@ -1,7 +1,10 @@
 import pandas as pd
 
 
-def create_sample(df, sample_size=12000):
+def create_sample(
+    df: pd.DataFrame,
+    sample_size: int = 12000
+) -> pd.DataFrame:
     """
     Create stratified sample preserving product distribution.
     """

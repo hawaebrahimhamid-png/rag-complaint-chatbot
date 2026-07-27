@@ -1,12 +1,15 @@
 import pandas as pd
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+from src.config import AppConfig
 
 
-def create_chunks(sample_df):
+def create_chunks(
+    sample_df: pd.DataFrame
+) -> pd.DataFrame:
 
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,
-        chunk_overlap=50
+        chunk_size=AppConfig.CHUNK_SIZE,
+        chunk_overlap=AppConfig.CHUNK_OVERLAP
     )
 
     chunks = []

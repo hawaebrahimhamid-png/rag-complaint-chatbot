@@ -1,15 +1,16 @@
 import faiss
 import pandas as pd
 from sentence_transformers import SentenceTransformer
+from src.config import AppConfig
 
 
 class Retriever:
 
     def __init__(
         self,
-        index_path,
-        metadata_path
-    ):
+        index_path: str,
+        metadata_path: str
+    ) -> None:
 
         self.index = faiss.read_index(
             index_path
@@ -20,15 +21,15 @@ class Retriever:
         )
 
         self.model = SentenceTransformer(
-            "sentence-transformers/all-MiniLM-L6-v2"
+             AppConfig.EMBEDDING_MODEL
         )
 
 
     def search(
         self,
-        question,
-        k=5
-    ):
+        question: str,
+        k: int = 5
+    ) -> pd.DataFrame:
 
         question_embedding = self.model.encode(
             [question]
