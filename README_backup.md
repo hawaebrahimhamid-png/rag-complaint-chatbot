@@ -5,164 +5,42 @@
 
 A Retrieval-Augmented Generation (RAG) chatbot that helps users analyze customer complaints from the CFPB dataset. The system retrieves relevant complaint records using semantic search and generates answers using a language model.
 
-
-## Business Problem
-
-Financial institutions receive thousands of customer complaints across different products and services. Manually reviewing these complaints is time-consuming and makes it difficult to identify common customer issues.
-
-Customer support teams need a solution that can quickly search complaint information, identify recurring problems, and provide reliable answers based on historical customer experiences.
-
-This project addresses this challenge by building an AI-powered complaint assistant that uses Retrieval-Augmented Generation (RAG) to retrieve relevant complaint information and generate evidence-based responses.
-
-
-## Solution Overview
-
-This project implements a Retrieval-Augmented Generation (RAG) pipeline that combines semantic search with a language model.
-
-The solution workflow:
-
-1. Clean and preprocess CFPB complaint data.
-2. Split complaint narratives into smaller semantic chunks.
-3. Generate embeddings using Sentence Transformers.
-4. Store embeddings in a FAISS vector database.
-5. Retrieve relevant complaint chunks using similarity search.
-6. Generate answers using the FLAN-T5 language model.
-7. Provide an interactive Streamlit interface with retrieved sources.
-
-
-
-## Key Results
-
-The project achieved the following technical outcomes:
-
-- Processed CFPB customer complaint data and prepared it for semantic retrieval.
-- Created a searchable FAISS vector database containing complaint chunks.
-- Implemented semantic retrieval using `sentence-transformers/all-MiniLM-L6-v2`.
-- Built a RAG pipeline using `google/flan-t5-small`.
-- Developed an interactive Streamlit dashboard for complaint analysis.
-- Added automated testing with 7 passing pytest tests.
-- Implemented CI/CD validation using GitHub Actions.
-
-
-
 ## Tech Stack
 
-- **Programming Language:** Python
-- **Web Framework:** Streamlit
-- **Embedding Model:** sentence-transformers/all-MiniLM-L6-v2
-- **Language Model:** google/flan-t5-small
-- **Vector Database:** FAISS
-- **Libraries:** Hugging Face Transformers, Pandas, Scikit-learn
-
-
-
-## Quick Start
-
-```bash
-git clone https://github.com/hawaebrahimhamid-png/rag-complaint-chatbot.git
-cd rag-complaint-chatbot
-pip install -r requirements.txt
-streamlit run app.py
-```
-
-
----
-
-
-## Project Structure
-
-```text
-rag-complaint-chatbot/
-
-├── app.py
-├── src/
-│   └── rag/
-│       ├── retriever.py
-│       ├── generator.py
-│       ├── pipeline.py
-│       └── prompt.py
-│
-├── tests/
-├── data/
-├── vector_store/
-├── reports/
-│   └── images/
-├── requirements.txt
-└── README.md
-```
-
-## Demo
-
-The Streamlit dashboard enables users to:
-
-- Ask questions about customer complaints.
-- Retrieve semantically similar complaint records.
-- Generate AI-powered responses.
-- View the complaint source chunks used to generate each answer.
-
-Example screenshots are available in the **Task 4** section below.
+- Python
+- Streamlit
+- Hugging Face Transformers
+- Sentence Transformers
+- FAISS Vector Database
+- Pandas
+- Scikit-learn
 
 ## System Architecture
 
 The application follows a Retrieval-Augmented Generation pipeline:
 
-```text
 User Question
-      │
-      ▼
+      |
+      ↓
 Query Embedding
-      │
-      ▼
+      |
+      ↓
 FAISS Similarity Search
-      │
-      ▼
+      |
+      ↓
 Relevant Complaint Chunks
-      │
-      ▼
+      |
+      ↓
 Prompt Construction
-      │
-      ▼
+      |
+      ↓
 FLAN-T5 Generator
-      │
-      ▼
+      |
+      ↓
 Final Answer + Sources
-```
-
-## Technical Details
-
-### Data
-
-Source:
-CFPB Consumer Complaint Dataset
-
-Preprocessing:
-- Filtered financial complaint categories.
-- Removed missing narratives.
-- Cleaned complaint text.
-- Created semantic chunks.
-
-### Model
-
-Embedding Model:
-`sentence-transformers/all-MiniLM-L6-v2`
-
-Vector Database:
-FAISS
-
-Generation Model:
-`google/flan-t5-small`
-
-### Evaluation
-
-The system was evaluated based on:
-
-- Retrieval relevance
-- Answer quality
-- Source transparency
-- Automated unit testing
 
 
-## Task 1: Exploratory Data Analysis and Data Preprocessing
+# Task 1: Exploratory Data Analysis and Data Preprocessing
 
 ## Objective
 
@@ -256,7 +134,7 @@ This dataset serves as the primary input for the chunking, embedding, vector ind
 notebooks/task1_eda.ipynb
 data/filtered_complaints.csv
 ```
-## Task 2: Text Chunking, Embedding, and Vector Store Creation
+# Task 2: Text Chunking, Embedding, and Vector Store Creation
 
 ## Objective
 
@@ -398,7 +276,7 @@ vector_store/
 └── chunks.csv
 ```
 
-## Task 3: Building the RAG Core Logic and Evaluation
+# Task 3: Building the RAG Core Logic and Evaluation
 
 ## Objective
 
@@ -525,7 +403,7 @@ Task 3 successfully produced a complete Retrieval-Augmented Generation (RAG) pip
 
 The completed RAG pipeline serves as the backend for the interactive Streamlit application developed in Task 4.
 
-## Task 4: Interactive Chat Interface
+# Task 4: Interactive Chat Interface
 
 ## Objective
 
@@ -631,6 +509,9 @@ Task 4 successfully delivered a clean and interactive Streamlit interface for th
 
 The application enables users to ask questions about customer complaints, receive context-aware AI-generated answers, and verify those answers through the retrieved source documents, improving both usability and trust in the system.
 
+Task 2 successfully creates a searchable vector database that will be used by the RAG retriever component in the next stage.
+
+
 
 ---
 
@@ -663,28 +544,20 @@ Testing improvements:
 Example test result:
 
 ```text
-========================
-7 passed in 4.53s
-========================
-```
+7 passed
+
+
 
 ---
 
-## CI/CD Pipeline
+## 2. Add your Interactive Dashboard explanation
 
-A GitHub Actions workflow was implemented to automatically run the project's test suite whenever changes are pushed or a pull request is opened.
+You already have screenshots inside **Task 4**, which is good.
 
-The workflow provides:
+However, for Week 12 evaluation, add a short dedicated section after Engineering Improvements:
 
-- Automated test execution
-- Continuous integration validation
-- Early detection of code issues
-- A GitHub Actions status badge showing the latest build status
-
-
-
-
-## Interactive Dashboard
+```markdown
+# Interactive Dashboard
 
 The Streamlit dashboard provides an interactive interface for exploring the complaint knowledge base and interacting with the RAG system.
 
@@ -698,7 +571,7 @@ The dashboard allows users to:
 
 The dashboard combines system transparency with usability by showing both generated answers and the evidence retrieved from the vector database.
 
-## Model Explainability
+# Model Explainability
 
 SHAP explanations were not applied because this project is a Retrieval-Augmented Generation (RAG) system rather than a traditional supervised machine learning prediction model.
 
@@ -709,24 +582,3 @@ Unlike classification or regression models, the RAG system does not make predict
 - Transparent context provided to the language model during answer generation.
 
 Displaying retrieved sources allows users to verify the evidence behind each generated response and improves trust in the AI assistant.
-
-
-
-# Future Improvements
-
-Possible improvements include:
-
-- Deploy the Streamlit application online.
-- Add user authentication.
-- Use larger language models for improved generation quality.
-- Add multilingual complaint analysis.
-- Improve retrieval ranking.
-- Add conversation history.
-
-
-## Author
-
-**Hawa Ebrahim Hamid**
-
-- GitHub: https://github.com/hawaebrahimhamid-png
-- LinkedIn: https://www.linkedin.com/in/hawa-ebrahim-hamid-189928383/
