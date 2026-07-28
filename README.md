@@ -1,5 +1,8 @@
 # CrediTrust Complaint Assistant - RAG System
 
+[![Python Tests](https://github.com/hawaebrahimhamid-png/rag-complaint-chatbot/actions/workflows/tests.yml/badge.svg)](https://github.com/hawaebrahimhamid-png/rag-complaint-chatbot/actions/workflows/tests.yml)
+
+
 A Retrieval-Augmented Generation (RAG) chatbot that helps users analyze customer complaints from the CFPB dataset. The system retrieves relevant complaint records using semantic search and generates answers using a language model.
 
 ## Tech Stack
