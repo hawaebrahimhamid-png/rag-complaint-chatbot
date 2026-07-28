@@ -1,25 +1,27 @@
 from pathlib import Path
+from typing import Tuple
+
+import pandas as pd
 
 from src.rag.retriever import Retriever
 from src.rag.prompt import PROMPT_TEMPLATE
 from src.rag.generator import generate_answer
 from src.config import AppConfig
 
-from typing import Tuple
-import pandas as pd
-
-
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
-retriever = Retriever(
-    str(PROJECT_ROOT / "vector_store" / "faiss.index"),
-    str(PROJECT_ROOT / "vector_store" / "metadata.csv")
-)
+def get_retriever() -> Retriever:
+    return Retriever(
+        str(PROJECT_ROOT / "vector_store" / "faiss.index"),
+        str(PROJECT_ROOT / "vector_store" / "metadata.csv")
+    )
 
 
 def ask(question: str) -> Tuple[str, pd.DataFrame]:
+
+    retriever = get_retriever()
 
     results = retriever.search(
         question,
@@ -32,20 +34,15 @@ def ask(question: str) -> Tuple[str, pd.DataFrame]:
             results
         )
 
-
     context = "\n".join(
         results["text"].tolist()
     )
-
 
     prompt = PROMPT_TEMPLATE.format(
         context=context,
         question=question
     )
 
-
     answer = generate_answer(prompt)
 
-
     return answer, results
-

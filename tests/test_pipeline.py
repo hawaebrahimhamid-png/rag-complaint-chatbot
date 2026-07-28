@@ -4,8 +4,10 @@ import pandas as pd
 from src.rag.pipeline import ask
 
 
-@patch("src.rag.pipeline.retriever")
-def test_ask_returns_fallback_when_no_results(mock_retriever):
+@patch("src.rag.pipeline.get_retriever")
+def test_ask_returns_fallback_when_no_results(mock_get_retriever):
+
+    mock_retriever = mock_get_retriever.return_value
 
     mock_retriever.search.return_value = pd.DataFrame()
 
@@ -18,11 +20,13 @@ def test_ask_returns_fallback_when_no_results(mock_retriever):
 
     
 @patch("src.rag.pipeline.generate_answer")
-@patch("src.rag.pipeline.retriever")
+@patch("src.rag.pipeline.get_retriever")
 def test_ask_returns_answer_when_context_exists(
-    mock_retriever,
+    mock_get_retriever,
     mock_generate_answer
 ):
+
+    mock_retriever = mock_get_retriever.return_value
 
     mock_retriever.search.return_value = pd.DataFrame(
         {
@@ -36,11 +40,9 @@ def test_ask_returns_answer_when_context_exists(
         "Common complaints are related to credit cards."
     )
 
-
     answer, results = ask(
         "What are common credit card complaints?"
     )
-
 
     assert answer == (
         "Common complaints are related to credit cards."
