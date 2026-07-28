@@ -485,29 +485,21 @@ The application will open automatically in your default web browser.
 
 ## Screenshots
 
-The following screenshots demonstrate the functionality of the interactive interface.
+The following screenshots demonstrate the improved interactive dashboard, RAG interaction, and business insights.
 
-### Home Page
+### Dashboard Overview and Business Insight
 
-Displays the initial application interface before a question is entered.
+Displays the system overview metrics, complaint distribution visualization, and business insights derived from the complaint knowledge base.
 
-![Home](reports/images/home.png)
+![Dashboard Overview and Business Insight](reports/images/dashboard_overview_business_insight.png)
 
 
 
-### Question and Generated Answer
+### RAG Question Answering and Retrieved Sources
 
-Shows a user query together with the AI-generated response.
+Shows a user query, the AI-generated response, and the retrieved complaint source chunks from the FAISS vector store used to support the answer.
 
-![Answer](reports/images/answer.png)
-
----
-
-### Retrieved Source Documents
-
-Displays the complaint text chunks retrieved from the FAISS vector store that were used to generate the response.
-
-![Sources](reports/images/sources.png)
+![RAG Interaction and Sources](reports/images/dashboard_rag_prediction_sources.png)
 
 
 
@@ -521,3 +513,72 @@ Task 2 successfully creates a searchable vector database that will be used by th
 
 
 
+---
+
+# Week 12: Engineering Improvements
+
+## Code Quality Improvements
+
+The project codebase was refactored following Python best practices to improve maintainability, readability, and scalability.
+
+Implemented improvements include:
+
+- Added type hints to function signatures for better code clarity.
+- Introduced dataclass-based configuration management.
+- Replaced hardcoded values with named constants.
+- Extracted reusable logic into utility functions.
+- Improved project structure by separating retrieval, generation, and pipeline components.
+
+---
+
+## Testing
+
+Automated unit tests were added using `pytest` to validate important system components.
+
+Testing improvements:
+
+- Added 7 unit tests covering core RAG functionality.
+- Tested retrieval behavior and pipeline components.
+- Ensured all tests pass successfully before deployment.
+
+Example test result:
+
+```text
+7 passed
+
+
+
+---
+
+## 2. Add your Interactive Dashboard explanation
+
+You already have screenshots inside **Task 4**, which is good.
+
+However, for Week 12 evaluation, add a short dedicated section after Engineering Improvements:
+
+```markdown
+# Interactive Dashboard
+
+The Streamlit dashboard provides an interactive interface for exploring the complaint knowledge base and interacting with the RAG system.
+
+The dashboard allows users to:
+
+- Explore key system metrics.
+- Visualize complaint distribution across financial products.
+- Ask questions and receive AI-generated responses.
+- View retrieved complaint sources supporting each answer.
+- Understand business implications through data-driven insights.
+
+The dashboard combines system transparency with usability by showing both generated answers and the evidence retrieved from the vector database.
+
+# Model Explainability
+
+SHAP explanations were not applied because this project is a Retrieval-Augmented Generation (RAG) system rather than a traditional supervised machine learning prediction model.
+
+Unlike classification or regression models, the RAG system does not make predictions based on learned feature importance. Instead, explainability is provided through:
+
+- Retrieved complaint source chunks.
+- FAISS similarity search results.
+- Transparent context provided to the language model during answer generation.
+
+Displaying retrieved sources allows users to verify the evidence behind each generated response and improves trust in the AI assistant.

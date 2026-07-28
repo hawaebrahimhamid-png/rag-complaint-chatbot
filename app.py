@@ -34,6 +34,8 @@ metadata = pd.read_csv(
     PROJECT_ROOT / "vector_store" / "metadata.csv"
 )
 
+product_counts = metadata["product"].value_counts()
+
 total_chunks = len(metadata)
 unique_products = metadata["product"].nunique()
 
@@ -52,6 +54,23 @@ with col3:
 
 with col4:
     st.metric("Top-K Retrieval", AppConfig.TOP_K)
+
+st.subheader("📈 Complaint Chunks by Product")
+
+st.bar_chart(product_counts)
+
+
+st.markdown("### 💡 Business Insight")
+
+st.info(
+    """
+    Checking or Savings Account complaints make up the largest portion of the
+    knowledge base. This suggests the RAG system has the most information
+    available for this product category, which may lead to more comprehensive
+    answers for related user questions.
+    """
+)
+
 
 # 👇 THEN KEEP YOUR QUESTION INPUT
 question = st.text_input(
