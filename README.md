@@ -1,6 +1,6 @@
 # CrediTrust Complaint Assistant - RAG System
 
-[![Python Tests](https://github.com/hawaebrahimhamid-png/rag-complaint-chatbot/actions/workflows/tests.yml/badge.svg)](https://github.com/hawaebrahimhamid-png/rag-complaint-chatbot/actions/workflows/tests.yml)
+[![Python Tests](https://github.com/hawaebrahimhamid/rag-complaint-chatbot/actions/workflows/tests.yml/badge.svg)](https://github.com/hawaebrahimhamid/rag-complaint-chatbot/actions/workflows/tests.yml)
 
 
 A Retrieval-Augmented Generation (RAG) chatbot that helps users analyze customer complaints from the CFPB dataset. The system retrieves relevant complaint records using semantic search and generates answers using a language model.
@@ -59,7 +59,7 @@ The project achieved the following technical outcomes:
 ## Quick Start
 
 ```bash
-git clone https://github.com/hawaebrahimhamid-png/rag-complaint-chatbot.git
+git clone https://github.com/hawaebrahimhamid/rag-complaint-chatbot.git
 cd rag-complaint-chatbot
 pip install -r requirements.txt
 streamlit run app.py
@@ -728,5 +728,5 @@ Possible improvements include:
 
 **Hawa Ebrahim Hamid**
 
-- GitHub: https://github.com/hawaebrahimhamid-png
-- LinkedIn: https://www.linkedin.com/in/hawa-ebrahim-hamid-189928383/
+- GitHub: https://github.com/hawaebrahimhamid
+- LinkedIn: https://www.linkedin.com/in/hawa-ebrahim-hamid/
